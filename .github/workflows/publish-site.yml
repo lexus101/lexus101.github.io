@@ -1,10 +1,10 @@
-name: Publish portfolio site
+name: Publish portfolio text patch
 
 on:
   push:
     branches: [main]
     paths:
-      - ".publish/**"
+      - ".publish/patch.zip"
       - ".github/workflows/publish-site.yml"
 
 permissions:
@@ -17,13 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Rebuild portfolio bundle
+      - name: Apply portfolio patch
         run: |
-          cat .publish/chunk-* > /tmp/site.zip
-          rm -rf /tmp/portfolio-site
-          mkdir -p /tmp/portfolio-site
-          unzip -q /tmp/site.zip -d /tmp/portfolio-site
-          rsync -a --delete --exclude='.git' --exclude='.github' --exclude='.publish' /tmp/portfolio-site/leo-portfolio-v10/ ./
+          unzip -o .publish/patch.zip -d .
           rm -rf .publish
 
       - name: Commit site
@@ -35,5 +31,5 @@ jobs:
             echo "No site changes to commit."
             exit 0
           fi
-          git commit -m "Publish portfolio v1.0"
+          git commit -m "Polish portfolio typography and spacing"
           git push
