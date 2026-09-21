@@ -636,3 +636,36 @@ body:before{
   .comeback-copy h3,.mode-proof-copy h3,.case-split h3{font-size:clamp(24px,7.5vw,34px)}
 }
 @media(prefers-reduced-motion:reduce){.hero-char{animation:none!important}}
+
+
+/* v1.1.1 — tighter Conquer handoff + clearer hero float */
+.more-work.section{padding-bottom:clamp(38px,4vw,58px)}
+.case-conquer .section{padding-top:clamp(30px,3.6vw,52px)}
+.case-conquer .case-intro{margin-top:0}
+
+.hero-char{
+  animation-name:heroCharFloatStrong;
+  animation-duration:3.9s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  animation-delay:calc(var(--char-index,0) * 85ms);
+  transform-origin:50% 70%;
+}
+.hero-line:nth-child(2) .hero-char{animation-duration:4.3s}
+.hero-line:nth-child(3) .hero-char{animation-duration:3.6s}
+@keyframes heroCharFloatStrong{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  28%{transform:translateY(-6px) rotate(-.45deg)}
+  58%{transform:translateY(3px) rotate(.35deg)}
+  82%{transform:translateY(-2px) rotate(-.15deg)}
+}
+@media(max-width:700px){
+  .more-work.section{padding-bottom:34px}
+  .case-conquer .section{padding-top:30px}
+  @keyframes heroCharFloatStrong{
+    0%,100%{transform:translateY(0)}
+    30%{transform:translateY(-4px)}
+    65%{transform:translateY(2px)}
+  }
+}
+@media(prefers-reduced-motion:reduce){.hero-char{animation:none!important}}
