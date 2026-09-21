@@ -669,3 +669,56 @@ body:before{
   }
 }
 @media(prefers-reduced-motion:reduce){.hero-char{animation:none!important}}
+
+
+/* v1.1.2 — remove accidental vertical dead zones */
+.research-top{align-items:start}
+.case-intro{align-items:start}
+
+/* Put the comeback proof where the reader actually needs it. */
+.comeback-copy{align-self:stretch;display:flex;flex-direction:column}
+.comeback-inline-media{margin:26px 0 0}
+.comeback-inline-frame{
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid rgba(17,17,15,.16);
+  background:#d6cdbc;
+  box-shadow:0 18px 48px rgba(69,47,21,.09);
+}
+.comeback-inline-frame video{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+}
+.comeback-inline-hud{
+  position:absolute;
+  left:12px;right:12px;top:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(17,17,15,.76);
+  color:#fff;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  backdrop-filter:blur(8px);
+}
+.comeback-inline-hud b{color:var(--acid);font-size:10px}
+.comeback-inline-media figcaption{
+  margin-top:9px;
+  max-width:560px;
+  font-size:11px;
+  line-height:1.45;
+  color:var(--muted);
+}
+.comeback-inline-media figcaption strong{color:var(--ink)}
+@media(max-width:900px){
+  .research-top,.case-intro{align-items:start}
+  .comeback-inline-media{margin-top:22px}
+}
